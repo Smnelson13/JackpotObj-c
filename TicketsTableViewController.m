@@ -6,96 +6,113 @@
 //  Copyright © 2017 Shane Nelson. All rights reserved.
 //
 
+
 #import "TicketsTableViewController.h"
+#import "WinningTicketViewController.h"
+
+#import "Ticket.h"
 
 @interface TicketsTableViewController ()
+{
+  NSMutableArray *tickets;
+}
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+
+- (IBAction)createTicket:(id)sender;
 
 @end
 
 @implementation TicketsTableViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  
+  self.title = @"Lottery Tickets";
+  tickets = [[NSMutableArray alloc] init];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)didReceiveMemoryWarning {
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
-    return 0;
+  // Return the number of sections.
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    return 0;
+  // Return the number of rows in the section.
+  return [tickets count];
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TicketCell" forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TicketCell" forIndexPath:indexPath];
+  
+  Ticket *aTicket = tickets[indexPath.row];
+  UILabel *numbersLabel = (UILabel *)[cell viewWithTag:1];
+  UILabel *payoutLabel = (UILabel *)[cell viewWithTag:2];
+  
+  numbersLabel.text = [aTicket description];
+  if (aTicket.winner)
+  {
+    cell.backgroundColor = [UIColor greenColor];
+    payoutLabel.text = aTicket.payout;
+  }
+  else
+  {
+    cell.backgroundColor = [UIColor whiteColor];
+    payoutLabel.text = @"";
+  }
+  return cell;
 }
 
+#pragma mark - WinningTicketViewControllerDelegate
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)winningTicketWasAdded:(Ticket *)ticket
+{
+  [self.navigationController popToRootViewControllerAnimated:YES];
+  [self checkForWinnersUsingTicket:ticket];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"ShowWinningTicketSegue"])
+  {
+    WinningTicketViewController *winningTicketVC = (WinningTicketViewController *)[segue destinationViewController];
+    winningTicketVC.delegate = self;
+  }
 }
-*/
+
+#pragma mark - Action Handlers
+
+- (IBAction)createTicket:(id)sender
+{
+  Ticket *aTicket =[Ticket ticketUsingQuickPick];
+  [tickets addObject:aTicket];
+  [self.tableView reloadData];
+}
+
+#pragma mark - Private Methods
+
+- (void)checkForWinnersUsingTicket:(Ticket *)winningTicket
+{
+  for (Ticket *aTicket in tickets)
+  {
+    [aTicket compareWithTicket:winningTicket];
+  }
+  [self.tableView reloadData];
+}
 
 @end

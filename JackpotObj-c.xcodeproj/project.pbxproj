@@ -15,8 +15,8 @@
 		907729C71EAFB9D300A9E6B6 /* JackpotObj_cTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 907729C61EAFB9D300A9E6B6 /* JackpotObj_cTests.m */; };
 		907729D21EAFB9D300A9E6B6 /* JackpotObj_cUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 907729D11EAFB9D300A9E6B6 /* JackpotObj_cUITests.m */; };
 		907729E11EAFBBE300A9E6B6 /* TicketsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907729E01EAFBBE300A9E6B6 /* TicketsTableViewController.m */; };
-		907729E71EAFCC5C00A9E6B6 /* TicketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 907729E61EAFCC5C00A9E6B6 /* TicketCell.m */; };
 		907729EA1EAFCEC200A9E6B6 /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 907729E91EAFCEC200A9E6B6 /* Ticket.m */; };
+		90DB6D4A1EB1368E009A8F78 /* WinningTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90DB6D491EB1368E009A8F78 /* WinningTicketViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +53,10 @@
 		907729D31EAFB9D300A9E6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907729DF1EAFBBE300A9E6B6 /* TicketsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TicketsTableViewController.h; path = ../TicketsTableViewController.h; sourceTree = "<group>"; };
 		907729E01EAFBBE300A9E6B6 /* TicketsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TicketsTableViewController.m; path = ../TicketsTableViewController.m; sourceTree = "<group>"; };
-		907729E51EAFCC5C00A9E6B6 /* TicketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TicketCell.h; path = ../TicketCell.h; sourceTree = "<group>"; };
-		907729E61EAFCC5C00A9E6B6 /* TicketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TicketCell.m; path = ../TicketCell.m; sourceTree = "<group>"; };
 		907729E81EAFCEC200A9E6B6 /* Ticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ticket.h; sourceTree = "<group>"; };
 		907729E91EAFCEC200A9E6B6 /* Ticket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ticket.m; sourceTree = "<group>"; };
+		90DB6D481EB1368E009A8F78 /* WinningTicketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinningTicketViewController.h; sourceTree = "<group>"; };
+		90DB6D491EB1368E009A8F78 /* WinningTicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinningTicketViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +107,10 @@
 		907729AB1EAFB9D300A9E6B6 /* JackpotObj-c */ = {
 			isa = PBXGroup;
 			children = (
-				907729E61EAFCC5C00A9E6B6 /* TicketCell.m */,
-				907729E51EAFCC5C00A9E6B6 /* TicketCell.h */,
 				907729DF1EAFBBE300A9E6B6 /* TicketsTableViewController.h */,
 				907729E01EAFBBE300A9E6B6 /* TicketsTableViewController.m */,
+				90DB6D481EB1368E009A8F78 /* WinningTicketViewController.h */,
+				90DB6D491EB1368E009A8F78 /* WinningTicketViewController.m */,
 				907729E81EAFCEC200A9E6B6 /* Ticket.h */,
 				907729E91EAFCEC200A9E6B6 /* Ticket.m */,
 				907729AF1EAFB9D300A9E6B6 /* AppDelegate.h */,
@@ -285,10 +285,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				907729EA1EAFCEC200A9E6B6 /* Ticket.m in Sources */,
+				90DB6D4A1EB1368E009A8F78 /* WinningTicketViewController.m in Sources */,
 				907729B11EAFB9D300A9E6B6 /* AppDelegate.m in Sources */,
 				907729AE1EAFB9D300A9E6B6 /* main.m in Sources */,
 				907729E11EAFBBE300A9E6B6 /* TicketsTableViewController.m in Sources */,
-				907729E71EAFCC5C00A9E6B6 /* TicketCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
