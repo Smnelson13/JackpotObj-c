@@ -18,6 +18,8 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+//@property (weak, nonatomic) IBOutlet UILabel *numbersLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *payoutLabel;
 
 - (IBAction)createTicket:(id)sender;
 
@@ -58,19 +60,17 @@
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TicketCell" forIndexPath:indexPath];
   
   Ticket *aTicket = tickets[indexPath.row];
-  UILabel *numbersLabel = (UILabel *)[cell viewWithTag:1];
-  UILabel *payoutLabel = (UILabel *)[cell viewWithTag:2];
+  cell.textLabel.text = [aTicket description];
   
-  numbersLabel.text = [aTicket description];
   if (aTicket.winner)
   {
     cell.backgroundColor = [UIColor greenColor];
-    payoutLabel.text = aTicket.payout;
+    cell.detailTextLabel.text = aTicket.payout;
   }
   else
   {
     cell.backgroundColor = [UIColor whiteColor];
-    payoutLabel.text = @"";
+    cell.detailTextLabel.text = @"";
   }
   return cell;
 }

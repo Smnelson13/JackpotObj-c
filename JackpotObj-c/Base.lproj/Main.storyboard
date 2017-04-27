@@ -18,37 +18,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketCell" id="PcE-XK-h39" customClass="TicketCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketCell" textLabel="iaO-6E-hSG" detailTextLabel="t0O-Nf-Bb7" style="IBUITableViewCellStyleValue1" id="PcE-XK-h39">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PcE-XK-h39" id="Oap-Of-ngd">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Den-UK-H55">
-                                            <rect key="frame" x="297" y="10.5" width="62" height="24"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iaO-6E-hSG">
+                                            <rect key="frame" x="15" y="12" width="70" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Em4-ov-u47">
-                                            <rect key="frame" x="16" y="10" width="83" height="24"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Payout" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t0O-Nf-Bb7">
+                                            <rect key="frame" x="307.5" y="12" width="52.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Em4-ov-u47" firstAttribute="leading" secondItem="Oap-Of-ngd" secondAttribute="leading" constant="16" id="FjF-Tz-wHG"/>
-                                        <constraint firstItem="Em4-ov-u47" firstAttribute="centerY" secondItem="Oap-Of-ngd" secondAttribute="centerY" id="McV-xd-mtU"/>
-                                        <constraint firstItem="Den-UK-H55" firstAttribute="centerY" secondItem="Oap-Of-ngd" secondAttribute="centerY" id="jh7-sX-nUm"/>
-                                        <constraint firstAttribute="trailing" secondItem="Den-UK-H55" secondAttribute="trailing" constant="16" id="yvq-PS-3h2"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="numberLabel" destination="Em4-ov-u47" id="4ID-Ik-U4h"/>
-                                    <outlet property="payoutLabel" destination="Den-UK-H55" id="gNC-i8-VYz"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -57,13 +49,54 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="w8S-tm-fhZ">
-                        <barButtonItem key="leftBarButtonItem" title="Check Ticket" id="BGs-rr-iX6"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3M4-9N-pFc"/>
+                        <barButtonItem key="leftBarButtonItem" title="Check Ticket" id="BGs-rr-iX6">
+                            <connections>
+                                <segue destination="e9W-zk-QfJ" kind="show" id="Ogq-z7-qfx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3M4-9N-pFc">
+                            <connections>
+                                <action selector="createTicket:" destination="KuZ-IR-6LK" id="wFl-Zd-nTS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEg-DN-EA6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="758" y="117"/>
+        </scene>
+        <!--Winning Ticket View Controller-->
+        <scene sceneID="w21-zH-eUi">
+            <objects>
+                <viewController id="e9W-zk-QfJ" customClass="WinningTicketViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dDj-QY-hln"/>
+                        <viewControllerLayoutGuide type="bottom" id="q5v-cV-uLJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zUq-50-JWU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swE-iJ-ath">
+                                <rect key="frame" x="27.5" y="225" width="320" height="216"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="swE-iJ-ath" firstAttribute="centerX" secondItem="zUq-50-JWU" secondAttribute="centerX" id="0F8-4i-2vd"/>
+                            <constraint firstItem="swE-iJ-ath" firstAttribute="centerY" secondItem="zUq-50-JWU" secondAttribute="centerY" id="wVM-YA-EHq"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="e7l-Hz-Fei"/>
+                        <barButtonItem title="Check Ticket" id="649-BV-U0A"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="1hL-Gn-qXr"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wN4-q0-NR9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1453" y="117"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3od-Nz-dRQ">
